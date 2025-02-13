@@ -36,6 +36,12 @@ public class TransactionController {
         }
     }
 
+    @DeleteMapping
+    public ResponseEntity delete(@RequestBody Transaction transaction) {
+        transactionService.clear(transaction);
+        return ResponseEntity.ok().body("Transactions deleted");
+    }
+
     @GetMapping
     public ResponseEntity<List<Transaction>> findAll() {
         List<Transaction> transactions = transactionService.findAll();
