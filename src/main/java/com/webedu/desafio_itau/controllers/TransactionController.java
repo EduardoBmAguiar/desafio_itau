@@ -29,10 +29,7 @@ public class TransactionController {
             return ResponseEntity.status(HttpStatus.CREATED).body(transaction);
 
         } catch (TransactionException e) {
-            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("Invalid Transaction, date or amount not accepted");
-
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Json");
+            throw new TransactionException(e.getMessage());
         }
     }
 
@@ -47,5 +44,4 @@ public class TransactionController {
         List<Transaction> transactions = transactionService.findAll();
         return ResponseEntity.ok(transactions);
     }
-
 }
