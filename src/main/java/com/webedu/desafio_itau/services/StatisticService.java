@@ -25,6 +25,12 @@ public class StatisticService {
 
         OffsetDateTime past = OffsetDateTime.now().minusSeconds(60);
         List<Transaction> pastTransactions = list.stream().filter(x -> x.getDataHora().isAfter(past)).toList();
+
+        if (pastTransactions.isEmpty()) {
+            statistic.setMin(BigDecimal.ZERO);
+            return statistic;
+        }
+
         for (Transaction t : pastTransactions) {
 
             statistic.setCount(statistic.getCount() + 1);
