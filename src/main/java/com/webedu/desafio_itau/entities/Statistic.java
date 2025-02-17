@@ -8,7 +8,7 @@ public class Statistic {
     private Integer count = 0;
     private BigDecimal sum = BigDecimal.ZERO;
     private BigDecimal avg = BigDecimal.ZERO;
-    private BigDecimal min = BigDecimal.ZERO;
+    private BigDecimal min = BigDecimal.valueOf(Double.MAX_VALUE);
     private BigDecimal max = BigDecimal.ZERO;
 
     public Statistic() {}

@@ -2,6 +2,7 @@ package com.webedu.desafio_itau.controllers;
 
 import com.webedu.desafio_itau.entities.Statistic;
 import com.webedu.desafio_itau.services.StatisticService;
+import com.webedu.desafio_itau.services.exceptions.StatistcException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +21,13 @@ public class StatisticController {
 
     @GetMapping
     public ResponseEntity<Statistic> getStatistic(Statistic obj) {
-        obj = statisticService.getStatistic();
+        try {
+            obj = statisticService.getStatistic();
 
-        return ResponseEntity.ok().body(obj);
+            return ResponseEntity.ok().body(obj);
+        } catch (ArithmeticException e) {
+            throw new StatistcException(e.getMessage() + "Error when obtaining statistical data");
+        }
     }
 
 

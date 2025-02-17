@@ -26,14 +26,18 @@ public class StatisticService {
         OffsetDateTime past = OffsetDateTime.now().minusSeconds(60);
         List<Transaction> pastTransactions = list.stream().filter(x -> x.getDataHora().isAfter(past)).toList();
         for (Transaction t : pastTransactions) {
+
             statistic.setCount(statistic.getCount() + 1);
+
             statistic.setSum(statistic.getSum().add(t.getValor()));
+
+            if (t.getValor().compareTo(statistic.getMax()) > 0) statistic.setMax(t.getValor());
+
+            if (t.getValor().compareTo(statistic.getMin()) < 0) statistic.setMin(t.getValor());
+
         }
 
         statistic.setAvg(statistic.getSum().divide(BigDecimal.valueOf(statistic.getCount()), 2, RoundingMode.HALF_UP));
-
-
-
 
         return statistic;
     }
