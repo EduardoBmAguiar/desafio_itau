@@ -8,9 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -39,9 +37,9 @@ public class TransactionController {
         return ResponseEntity.ok().body("Transactions deleted");
     }
 
-    @GetMapping
+    @GetMapping(consumes = MediaType.ALL_VALUE)
     public ResponseEntity<List<Transaction>> findAll() {
         List<Transaction> transactions = transactionService.findAll();
-        return ResponseEntity.ok(transactions);
+        return ResponseEntity.ok().body(transactions);
     }
 }
