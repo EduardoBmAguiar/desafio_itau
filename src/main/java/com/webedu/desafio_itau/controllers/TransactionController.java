@@ -1,5 +1,6 @@
 package com.webedu.desafio_itau.controllers;
 
+import com.webedu.desafio_itau.annotation.TrackExecutionTime;
 import com.webedu.desafio_itau.entities.Transaction;
 import com.webedu.desafio_itau.services.TransactionService;
 import com.webedu.desafio_itau.services.exceptions.TransactionException;
@@ -22,6 +23,7 @@ public class TransactionController {
     @Autowired
     TransactionService transactionService;
 
+    @TrackExecutionTime
     @PostMapping
     public ResponseEntity<Transaction> save(@RequestBody Transaction transaction) {
         try {
@@ -36,6 +38,7 @@ public class TransactionController {
         }
     }
 
+    @TrackExecutionTime
     @DeleteMapping
     public ResponseEntity<Void> delete() {
         log.info("Trying to delete a transitions");
@@ -44,6 +47,7 @@ public class TransactionController {
         return ResponseEntity.ok().build();
     }
 
+    @TrackExecutionTime
     @GetMapping(consumes = MediaType.ALL_VALUE)
     public ResponseEntity<List<Transaction>> findAll() {
         log.info("Trying to find all transactions");

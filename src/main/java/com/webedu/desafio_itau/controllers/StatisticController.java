@@ -1,5 +1,6 @@
 package com.webedu.desafio_itau.controllers;
 
+import com.webedu.desafio_itau.annotation.TrackExecutionTime;
 import com.webedu.desafio_itau.entities.Statistic;
 import com.webedu.desafio_itau.services.StatisticService;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,7 @@ public class StatisticController {
     @Autowired
     StatisticService statisticService;
 
+    @TrackExecutionTime
     @GetMapping
     public ResponseEntity<Statistic> getStatistic() {
             log.info("Trying Get statistic");
