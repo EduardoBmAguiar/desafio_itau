@@ -19,14 +19,15 @@ public class StatisticService {
     @Autowired
     private TransactionRepository transactionRepository;
 
-    public Statistic getStatistic() {
+    public Statistic getStatistic(Integer lastMinutes) {
 
         Statistic statistic = new Statistic();
 
         List<Transaction> list = transactionRepository.getTransactions();
 
         log.info("Getting a list of transitional in the last minute");
-        OffsetDateTime past = OffsetDateTime.now().minusSeconds(60);
+        lastMinutes = lastMinutes * 60;
+        OffsetDateTime past = OffsetDateTime.now().minusSeconds(lastMinutes);
         List<Transaction> pastTransactions = list.stream().filter(x -> x.getDataHora().isAfter(past)).toList();
 
         log.info("Checking for any transitions in the last minute");

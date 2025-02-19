@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
@@ -24,9 +25,9 @@ public class StatisticController {
     @Operation(description = "Está requizição faz o calculo das Estatisticas: count, sum, avg, min, max.", summary = "Realiza o cálculo das estátisticas", method = "GET")
     @ApiResponse(responseCode = "200", description = "Calculo Feito, e retornado")
     @GetMapping
-    public ResponseEntity<Statistic> getStatistic() {
+    public ResponseEntity<Statistic> getStatistic(@RequestParam(value = "lastMinutes", defaultValue = "1") Integer lastMinutes) {
             log.info("Trying Get statistic");
-            Statistic obj = statisticService.getStatistic();
+            Statistic obj = statisticService.getStatistic(lastMinutes);
             log.info("Statistics obtained");
             return ResponseEntity.ok().body(obj);
     }
