@@ -45,7 +45,7 @@ public class TransactionController {
     @TrackExecutionTime
     @Operation(description = "Está requizição faz a deleção de todas as transações salvas na memória.", summary = "Realiza a deleção de todas as transações", method = "DELETE")
     @ApiResponse(responseCode = "200", description = "Transações deletadas")
-    @DeleteMapping
+    @DeleteMapping(consumes = MediaType.ALL_VALUE)
     public ResponseEntity<Void> delete() {
         log.info("Trying to delete a transitions");
         transactionService.clear();
