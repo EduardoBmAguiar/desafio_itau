@@ -22,5 +22,4 @@ public class ValidateTransaction {
             throw new TransactionException("invalid date time");
         }
     }
-
 }

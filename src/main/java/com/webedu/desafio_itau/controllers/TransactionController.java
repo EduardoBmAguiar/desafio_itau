@@ -23,7 +23,7 @@ public class TransactionController {
     TransactionService transactionService;
 
     @PostMapping
-    public ResponseEntity save(@RequestBody Transaction transaction) {
+    public ResponseEntity<Transaction> save(@RequestBody Transaction transaction) {
         try {
             log.info("Trying to save a transition");
             transaction = transactionService.save(transaction);
@@ -37,11 +37,11 @@ public class TransactionController {
     }
 
     @DeleteMapping
-    public ResponseEntity delete(@RequestBody Transaction transaction) {
+    public ResponseEntity<Void> delete() {
         log.info("Trying to delete a transitions");
-        transactionService.clear(transaction);
+        transactionService.clear();
         log.info("Transactions deleted");
-        return ResponseEntity.ok().body("Transactions deleted");
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping(consumes = MediaType.ALL_VALUE)

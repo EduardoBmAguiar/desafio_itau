@@ -25,7 +25,7 @@ public class TransactionService {
         return transactionRepository.save(transaction);
     }
 
-    public void clear(Transaction transaction) {
+    public void clear() {
         log.info("Going to delete the transaction");
         transactionRepository.clear();
     }

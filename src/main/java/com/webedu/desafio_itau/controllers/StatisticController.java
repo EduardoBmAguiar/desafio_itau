@@ -18,9 +18,9 @@ public class StatisticController {
     StatisticService statisticService;
 
     @GetMapping
-    public ResponseEntity<Statistic> getStatistic(Statistic obj) {
+    public ResponseEntity<Statistic> getStatistic() {
             log.info("Trying Get statistic");
-            obj = statisticService.getStatistic();
+            Statistic obj = statisticService.getStatistic();
             log.info("Statistics obtained");
             return ResponseEntity.ok().body(obj);
     }
