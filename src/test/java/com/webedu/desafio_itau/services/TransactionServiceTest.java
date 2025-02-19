@@ -2,7 +2,7 @@ package com.webedu.desafio_itau.services;
 
 import com.webedu.desafio_itau.entities.Transaction;
 import com.webedu.desafio_itau.repositories.TransactionRepository;
-import com.webedu.desafio_itau.services.exceptions.TransactionException;
+import com.webedu.desafio_itau.exceptions.TransactionException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
