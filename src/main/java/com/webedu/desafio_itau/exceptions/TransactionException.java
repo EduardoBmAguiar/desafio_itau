@@ -1,4 +1,4 @@
-package com.webedu.desafio_itau.services.exceptions;
+package com.webedu.desafio_itau.exceptions;
 
 public class TransactionException extends RuntimeException{
 

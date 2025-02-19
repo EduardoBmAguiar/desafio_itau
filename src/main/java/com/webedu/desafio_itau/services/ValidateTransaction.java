@@ -1,7 +1,7 @@
 package com.webedu.desafio_itau.services;
 
 import com.webedu.desafio_itau.entities.Transaction;
-import com.webedu.desafio_itau.services.exceptions.TransactionException;
+import com.webedu.desafio_itau.exceptions.TransactionException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

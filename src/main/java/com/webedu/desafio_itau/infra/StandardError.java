@@ -1,4 +1,4 @@
-package com.webedu.desafio_itau.controllers.exceptions;
+package com.webedu.desafio_itau.infra;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

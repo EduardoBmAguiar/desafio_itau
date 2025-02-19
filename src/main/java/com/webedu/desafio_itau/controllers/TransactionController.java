@@ -3,7 +3,7 @@ package com.webedu.desafio_itau.controllers;
 import com.webedu.desafio_itau.annotation.TrackExecutionTime;
 import com.webedu.desafio_itau.entities.Transaction;
 import com.webedu.desafio_itau.services.TransactionService;
-import com.webedu.desafio_itau.services.exceptions.TransactionException;
+import com.webedu.desafio_itau.exceptions.TransactionException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,16 +26,12 @@ public class TransactionController {
     @TrackExecutionTime
     @PostMapping
     public ResponseEntity<Transaction> save(@RequestBody Transaction transaction) {
-        try {
+
             log.info("Trying to save a transition");
             transaction = transactionService.save(transaction);
             log.info("Transaction saved");
             return ResponseEntity.status(HttpStatus.CREATED).body(transaction);
 
-        } catch (TransactionException e) {
-            log.error("Don´t save a transition");
-            throw new TransactionException(e.getMessage());
-        }
     }
 
     @TrackExecutionTime
